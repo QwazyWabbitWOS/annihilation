@@ -4,7 +4,7 @@
 #include "g_helper.h"
 
 // ======================================================
-// =========== AIRIAL LASERDRONE WEAPON =================
+// =========== AERIAL LASERDRONE WEAPON =================
 // ======================================================
 // ======================================================
 // ============ LASERDRONE WEAPON ROUTINES ==============
@@ -20,7 +20,7 @@ qboolean        visible(edict_t* self, edict_t* other);
 #define LASER_FIRE_SOUND gi.soundindex("gladiator/railgun.wav")
 // ======================================================
 
-void            LaserDrone_Fire(edict_t* LaserDrone, edict_t* target)
+void LaserDrone_Fire(edict_t* LaserDrone, edict_t* target)
 {
 	trace_t         tr;
 	vec3_t          dummy = { 0, 0, 0 };
@@ -96,7 +96,7 @@ void LaserDrone_Die(edict_t* LaserDrone, edict_t* inflictor, edict_t* attacker, 
 // ======================================================
 // True if start and end are within radius distance..
 // ======================================================
-qboolean        Within_Radius(vec3_t start, vec3_t end, float rad)
+qboolean Within_Radius(vec3_t start, vec3_t end, float rad)
 {
 	vec3_t          eorg = { 0, 0, 0 };
 	int             j;
@@ -108,7 +108,7 @@ qboolean        Within_Radius(vec3_t start, vec3_t end, float rad)
 // ======================================================
 // True if ent meets Drone's targeting criteria..
 // ======================================================
-qboolean        Good_Target(edict_t* LaserDrone, edict_t* ent)
+qboolean Good_Target(edict_t* LaserDrone, edict_t* ent)
 {
 	// float rad;
 	edict_t* tom = NULL;
@@ -132,7 +132,7 @@ qboolean        Good_Target(edict_t* LaserDrone, edict_t* ent)
 // ======================================================
 // True if LaserDrone has been deactivated (exploded!).
 // ======================================================
-qboolean        DeActivated(edict_t* LaserDrone)
+qboolean DeActivated(edict_t* LaserDrone)
 {
 	// Has time expired? Or, Owner since died?
 	if ((LaserDrone->delay < level.time)
@@ -148,7 +148,7 @@ qboolean        DeActivated(edict_t* LaserDrone)
 // ======================================================
 // Need dummy touch because BBOX hits world surfaces..
 // ======================================================
-void            LaserDrone_Touch(edict_t* LaserDrone, edict_t* other, cplane_t* plane, csurface_t* surf)
+void LaserDrone_Touch(edict_t* LaserDrone, edict_t* other, cplane_t* plane, csurface_t* surf)
 {
 }
 
