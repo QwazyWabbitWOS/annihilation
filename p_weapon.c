@@ -811,7 +811,10 @@ void weapon_grenade_fire(edict_t* ent, qboolean held)
 	int     speed;
 	float   radius;
 
-	if (ent->client && ent->client->resp.proximity)
+	if (!ent->client)
+		return;
+
+	if (ent->client->resp.proximity)
 	{
 		if (((int)prox_limit->value >= 0) && (numprox(ent) >= (int)prox_limit->value))
 		{
@@ -1021,9 +1024,12 @@ void weapon_grenadelauncher_fire(edict_t* ent)
 	int     damage = 120;
 	float   radius;
 
+	if (!ent->client)
+		return;
+
 	if (!((int)dmflags->value & DF_INFINITE_AMMO))
 	{
-		if (ent->client && ent->client->resp.cluster_state)
+		if (ent->client->resp.cluster_state)
 		{
 			if (ent->client->pers.inventory[ITEM_INDEX(FindItem("Grenades"))] < CLUSTER_GRENADES)
 			{
@@ -1090,6 +1096,17 @@ void Weapon_RocketLauncher_Fire(edict_t* ent)
 	float   damage_radius;
 	int     radius_damage;
 
+	damage = 100 + (int)(random() * 20.0);
+	radius_damage = 120;
+	damage_radius = 120;
+	if (is_quad)
+	{
+		damage *= 4;
+		radius_damage *= 4;
+	}
+
+	AngleVectors(ent->client->v_angle, forward, right, NULL);
+
 	/* *** HOMING MISSILES and NUKES and BOUNCE ROCKETS *** */
 	if (!((int)dmflags->value & DF_INFINITE_AMMO))
 	{
@@ -1126,17 +1143,6 @@ void Weapon_RocketLauncher_Fire(edict_t* ent)
 			return;
 		}
 	}
-
-	damage = 100 + (int)(random() * 20.0);
-	radius_damage = 120;
-	damage_radius = 120;
-	if (is_quad)
-	{
-		damage *= 4;
-		radius_damage *= 4;
-	}
-
-	AngleVectors(ent->client->v_angle, forward, right, NULL);
 
 	VectorScale(forward, -2, ent->client->kick_origin);
 	ent->client->kick_angles[0] = -1;
@@ -1236,6 +1242,9 @@ void Weapon_HyperBlaster_Fire(edict_t* ent)
 	vec3_t  offset;
 	int     effect;
 	int     damage;
+
+	if (!ent->client)
+		return;
 
 	/* *** DISRUPTOR RIFLE *** */
 	if (!((int)dmflags->value & DF_INFINITE_AMMO))
@@ -1768,9 +1777,12 @@ void weapon_railgun_fire(edict_t* ent)
 	int         damage;
 	int         kick;
 
+	if (!ent->client)
+		return;
+
 	if (!((int)dmflags->value & DF_INFINITE_AMMO))
 	{
-		if ((ent->client && ent->client->resp.sniper) && (ent->client->pers.inventory[ITEM_INDEX(FindItem("Slugs"))] < SNIPER_SLUGS))
+		if ((ent->client->resp.sniper) && (ent->client->pers.inventory[ITEM_INDEX(FindItem("Slugs"))] < SNIPER_SLUGS))
 		{
 			gi.cprintf(ent, PRINT_HIGH, "You need %d slugs to fire the sniper rifle!\n", SNIPER_SLUGS);
 			ent->client->resp.sniper = 0;
@@ -1866,6 +1878,9 @@ void weapon_bfg_fire(edict_t* ent)
 	vec3_t  forward, right;
 	int     damage;
 	float   damage_radius = 1000;
+
+	if (!ent->client)
+		return;
 
 	if (deathmatch->value)
 		damage = 200;

@@ -126,9 +126,7 @@ void SP_turret_base(edict_t* self);
 void SP_turret_driver(edict_t* self);
 
 /* *** ANN TURRET *** */
-#if 0
-void SP_annturret_body(edict_t* self);
-#endif
+//void SP_annturret_body(edict_t* self);
 /* *** */
 
 
