@@ -3,7 +3,7 @@
 
 #define BOT_DETECTION_FNAME	"botdetect.log"
 
-#define BOT_DETECTION_TIMER           0.1
+#define BOT_DETECTION_TIMER           FRAMETIME
 #define BOT_DETECTION_COUNT           1
 #define BOT_DETECTION_ATTACK_RATE     40000.0
 #define BOT_DETECTION_RESTORE_RATE    0.0

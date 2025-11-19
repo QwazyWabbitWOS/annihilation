@@ -321,7 +321,7 @@ void ExitLevel(void)
 ================
 G_RunFrame
 
-Advances the world by 0.1 seconds
+Advances the world by FRAMETIME seconds
 ================
 */
 void G_RunFrame(void)

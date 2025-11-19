@@ -169,7 +169,7 @@ void home_ent(edict_t* ent, int count)
 		VectorScale(targetdir, speed, ent->velocity);
 	}
 
-	ent->nextthink = level.time + 0.1;
+	ent->nextthink = level.time + FRAMETIME;
 
 	if (Q_stricmp(ent->classname, "drbolt") == 0)
 	{
@@ -920,7 +920,7 @@ void killlaser(edict_t* self, edict_t* inflictor, edict_t* attacker, int damage,
 	static int sorted = 0;
 
 	self->think = removelaser;
-	self->nextthink = level.time + 0.1;
+	self->nextthink = level.time + FRAMETIME;
 	self->activator = attacker;
 
 	if (!self->activator->client)
@@ -1225,7 +1225,7 @@ void killpipe(edict_t* self, edict_t* inflictor, edict_t* attacker, int damage, 
 	static int sorted = 0;
 
 	self->think = removepipe;
-	self->nextthink = level.time + 0.1;
+	self->nextthink = level.time + FRAMETIME;
 	self->activator = attacker;
 
 	if (!self->activator->client)
@@ -1301,7 +1301,7 @@ void PipeBomb_Touch(edict_t* ent, edict_t* other, cplane_t* plane, csurface_t* s
 				Q_stricmp(blip->classname, "info_player_team2") == 0)
 			{
 				ent->think = invalidpipe;
-				ent->nextthink = level.time + 0.1;
+				ent->nextthink = level.time + FRAMETIME;
 				break;
 			}
 		}
@@ -1385,7 +1385,7 @@ void Proximity_Touch(edict_t* ent, edict_t* other, cplane_t* plane, csurface_t* 
 	if (other->use)
 	{
 		ent->think = nonstaticprox;
-		ent->nextthink = level.time + 0.1;
+		ent->nextthink = level.time + FRAMETIME;
 		return;
 	}
 
@@ -1407,7 +1407,7 @@ void Proximity_Touch(edict_t* ent, edict_t* other, cplane_t* plane, csurface_t* 
 				Q_stricmp(blip->classname, "info_player_team2") == 0)
 			{
 				ent->think = invalidprox;
-				ent->nextthink = level.time + 0.1;
+				ent->nextthink = level.time + FRAMETIME;
 				break;
 			}
 		}
@@ -1468,7 +1468,7 @@ void proximity_think(edict_t* ent)
 		break;
 	}
 
-	ent->nextthink = level.time + 0.1;
+	ent->nextthink = level.time + FRAMETIME;
 }
 
 void killprox(edict_t* self, edict_t* inflictor, edict_t* attacker, int damage, vec3_t point)
@@ -1477,7 +1477,7 @@ void killprox(edict_t* self, edict_t* inflictor, edict_t* attacker, int damage, 
 	static int sorted = 0;
 
 	self->think = removeprox;
-	self->nextthink = level.time + 0.1;
+	self->nextthink = level.time + FRAMETIME;
 	self->activator = attacker;
 
 	if (!self->activator->client)
@@ -1558,7 +1558,7 @@ void killflare(edict_t* self, edict_t* inflictor, edict_t* attacker, int damage,
 	self->takedamage = DAMAGE_NO;
 	self->die = nothing;
 	self->think = Grenade_Explode;
-	self->nextthink = level.time + 0.1;
+	self->nextthink = level.time + FRAMETIME;
 }
 /* *** */
 
@@ -3082,7 +3082,7 @@ void guideThink(edict_t* ent)
 	dist = VectorNormalize(tvect);
 	VectorCopy(forward, ent->velocity);
 	vectoangles(tvect, ent->s.angles);
-	ent->nextthink = level.time + 0.1;
+	ent->nextthink = level.time + FRAMETIME;
 }
 
 /* *** PHASER *** */
@@ -3135,7 +3135,7 @@ void phaser_think(edict_t* ent)
 	vectoangles(forward, ent->s.angles);
 	VectorScale(forward, 400, ent->velocity);
 
-	ent->nextthink = level.time + 0.1;
+	ent->nextthink = level.time + FRAMETIME;
 	target_laser_on(ent);
 }
 

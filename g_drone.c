@@ -184,7 +184,7 @@ void            LaserDrone_ThinkSlow(edict_t* LaserDrone)
 		return;
 	}
 	// Nobody around? so, re-target on next frame.
-	LaserDrone->nextthink = level.time + 0.1;
+	LaserDrone->nextthink = level.time + FRAMETIME;
 }
 #endif
 
@@ -247,7 +247,7 @@ void LaserDrone_ThinkFast(edict_t* LaserDrone)
 		}                       // end for
 	}
 	// Nobody around? Re-target on next frame.
-	LaserDrone->nextthink = level.time + 0.1;
+	LaserDrone->nextthink = level.time + FRAMETIME;
 }
 
 // ======================================================
@@ -260,7 +260,7 @@ void Activate_LaserDrone(edict_t* LaserDrone)
 	// Let Owner know that LaserDrone is now Active..
 	gi.centerprintf(LaserDrone->owner, "LaserDrone is now active!\n");
 	LaserDrone->think = LaserDrone_ThinkFast;   // Use the FAST TARGETING routine.
-	LaserDrone->nextthink = level.time + 0.1;   // Start thinking on next frame..
+	LaserDrone->nextthink = level.time + FRAMETIME;   // Start thinking on next frame..
 	/* *** TOM *** */
 	LaserDrone->owner->client->droneent = 0;
 	/* *** */

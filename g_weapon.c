@@ -12,7 +12,7 @@ void nukeimpacteffect(edict_t* ent)
 	gi.WriteByte(TE_EXPLOSION1_BIG);
 	gi.WritePosition(ent->s.origin);
 	gi.multicast(ent->s.origin, MULTICAST_PHS);
-	ent->nextthink = level.time + 0.1;
+	ent->nextthink = level.time + FRAMETIME;
 }
 /* *** */
 
@@ -47,7 +47,7 @@ void guided_die_think(edict_t* ent)
 	AngleVectors(ent->s.angles, forward, NULL, NULL);
 	VectorScale(forward, 250, ent->velocity);
 
-	ent->nextthink = level.time + 0.1;
+	ent->nextthink = level.time + FRAMETIME;
 
 	guided_sparks(ent);
 }
@@ -68,7 +68,7 @@ void guided_die(edict_t* ent, edict_t* inflictor, edict_t* attacker, int damage,
 	ent->die = NULL;
 
 	ent->think = guided_die_think;
-	ent->nextthink = level.time + 0.1;
+	ent->nextthink = level.time + FRAMETIME;
 }
 
 void nuke_die(edict_t* ent, edict_t* inflictor, edict_t* attacker, int damage, vec3_t point)
@@ -82,7 +82,7 @@ void nuke_die(edict_t* ent, edict_t* inflictor, edict_t* attacker, int damage, v
 	ent->die = NULL;
 
 	ent->think = guided_die_think;
-	ent->nextthink = level.time + 0.1;
+	ent->nextthink = level.time + FRAMETIME;
 }
 /* *** */
 
@@ -793,7 +793,7 @@ void fire_grenade2(edict_t* self, vec3_t start, vec3_t aimdir, int damage, int s
 		grenade->parent = self;
 		grenade->s.modelindex = gi.modelindex("models/objects/proximity/tris.md2");
 		grenade->classname = "proximity";
-		grenade->nextthink = level.time + 0.1;
+		grenade->nextthink = level.time + FRAMETIME;
 		grenade->think = proximity_think;
 		grenade->dmg = PROXIMITY_DAMAGE;
 		grenade->dmg_radius = PROXIMITY_DAMAGE_RADIUS;
@@ -1054,7 +1054,7 @@ void fire_rocket(edict_t* self, vec3_t start, vec3_t dir, int damage, int speed,
 		if (self->client->resp.guided)
 		{
 			VectorScale(dir, 450.0, rocket->velocity);
-			rocket->nextthink = level.time + 0.1;
+			rocket->nextthink = level.time + FRAMETIME;
 			rocket->think = guideThink;
 		}
 		/* *** */

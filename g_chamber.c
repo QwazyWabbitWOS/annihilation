@@ -123,7 +123,7 @@ void Torture_The_Bastard(edict_t* particle)
 		else
 			// Go search for another victim!
 			particle->think = Search_For_Player;
-		particle->nextthink = level.time + 0.1; // On next frame..
+		particle->nextthink = level.time + FRAMETIME; // On next frame..
 		return;
 	}
 	// If last torture cycle, then
@@ -189,7 +189,7 @@ void Beam_Player_Into_Chamber(edict_t* particle)
 	// TOM - no, don't
 	// Start Torture effect on next frame
 	particle->think = Torture_The_Bastard;
-	particle->nextthink = level.time + 0.1;
+	particle->nextthink = level.time + FRAMETIME;
 	/* *** TOM *** */
 	if (particle->goalentity->client)
 	{
@@ -226,7 +226,7 @@ void Search_For_Player(edict_t* particle)
 		particle->owner->client->chamber = 0;
 		/* *** */
 		particle->think = Chamber_Explode;  // Self destruct..
-		particle->nextthink = level.time + 0.1; // On next frame.
+		particle->nextthink = level.time + FRAMETIME; // On next frame.
 		return;
 	}
 	// Chamber makes a frying/hissing sound!!
@@ -278,7 +278,7 @@ void Search_For_Player(edict_t* particle)
 		}                       // end for
 		// Continue searching on next frame.
 		particle->think = Search_For_Player;
-		particle->nextthink = level.time + 0.1;
+		particle->nextthink = level.time + FRAMETIME;
 	}
 	else                        // *** TOM *** Single Player
 		//
@@ -302,7 +302,7 @@ void Search_For_Player(edict_t* particle)
 		}                       // end for
 	// Continue searching on next frame.
 	particle->think = Search_For_Player;
-	particle->nextthink = level.time + 0.1;
+	particle->nextthink = level.time + FRAMETIME;
 }
 
 /* *** TOM *** */
@@ -360,7 +360,7 @@ void Laser_Think(edict_t* laser)
 	VectorMA(laser->s.origin, 70, laser->movedir, end);
 	tr = gi.trace(laser->s.origin, NULL, NULL, end, laser, MASK_ALL);
 	VectorCopy(tr.endpos, laser->s.old_origin);
-	laser->nextthink = level.time + 0.1;    // Every frame else it flashes!!
+	laser->nextthink = level.time + FRAMETIME;    // Every frame else it flashes!!
 }
 // ==========================================================
 // Place the 'stove pipe' on top of Particle Chamber.
@@ -449,7 +449,7 @@ void Create_Laser_Entity(edict_t* botpad)
 	// ------------------------------------------
 	laser->touch = Dummy_Touch;
 	laser->think = Laser_Think;
-	laser->nextthink = level.time + 0.1;
+	laser->nextthink = level.time + FRAMETIME;
 	gi.linkentity(laser);
 }
 // ======================================================

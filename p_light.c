@@ -82,7 +82,7 @@ void FL_make(edict_t* self)
 	self->client->resp.flashlight->s.renderfx |= RF_FULLBRIGHT;
 
 	self->client->resp.flashlight->think = FL_think;
-	self->client->resp.flashlight->nextthink = level.time + 0.1;
+	self->client->resp.flashlight->nextthink = level.time + FRAMETIME;
 }
 /*
 
@@ -126,7 +126,7 @@ void FL_think(edict_t* self)
 	vectoangles(tr.plane.normal, self->s.angles);
 	VectorCopy(tr.endpos, self->s.origin);
 	gi.linkentity(self);
-	self->nextthink = level.time + 0.1;
+	self->nextthink = level.time + FRAMETIME;
 
 	if (self->owner->client->resp.fltype == 2)
 	{
