@@ -9,7 +9,6 @@ chick
 #include "g_local.h"
 #include "m_chick.h"
 
-
 void chick_stand(edict_t* self);
 void chick_run(edict_t* self);
 void chick_reslash(edict_t* self);
@@ -566,7 +565,7 @@ void chick_reslash(edict_t* self)
 				self->monsterinfo.currentmove = &chick_move_end_slash;
 				return;
 			}
-	}
+		}
 	}
 	self->monsterinfo.currentmove = &chick_move_end_slash;
 }

@@ -10,7 +10,6 @@ MEDIC
 #include "m_medic.h"
 
 
-
 static int	sound_idle1;
 static int	sound_pain1;
 static int	sound_pain2;

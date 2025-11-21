@@ -9,7 +9,6 @@ Makron -- Final Boss
 #include "g_local.h"
 #include "m_boss32.h"
 
-
 void MakronRailgun(edict_t* self);
 void MakronSaveloc(edict_t* self);
 void MakronHyperblaster(edict_t* self);
@@ -576,8 +575,8 @@ void makron_pain(edict_t* self, edict_t* other, float kick, int damage)
 					gi.sound(self, CHAN_VOICE, sound_pain6, 1, ATTN_NONE, 0);
 					self->monsterinfo.currentmove = &makron_move_pain6;
 				}
+		}
 	}
-}
 }
 
 void makron_sight(edict_t* self, edict_t* other)
@@ -587,10 +586,7 @@ void makron_sight(edict_t* self, edict_t* other)
 
 void makron_attack(edict_t* self)
 {
-
 	float r = random();
-
-
 
 	if (r <= 0.3)
 		self->monsterinfo.currentmove = &makron_move_attack3;

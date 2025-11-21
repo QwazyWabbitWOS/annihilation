@@ -518,8 +518,6 @@ void jorg_firebullet(edict_t* self)
 
 void jorg_attack(edict_t* self)
 {
-
-
 	if (random() <= 0.75)
 	{
 		gi.sound(self, CHAN_VOICE, sound_attack1, 1, ATTN_NORM, 0);

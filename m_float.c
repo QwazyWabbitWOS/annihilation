@@ -520,7 +520,7 @@ void floater_zap(edict_t* self)
 	//FIXME use the flash, Luke
 	gi.WriteByte(svc_temp_entity);
 	gi.WriteByte(TE_SPLASH);
-	gi.WriteByte(32);
+	gi.WriteByte(32);  //count
 	gi.WritePosition(origin);
 	gi.WriteDir(dir);
 	gi.WriteByte(SPLASH_SPARKS);	//sparks

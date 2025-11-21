@@ -460,6 +460,7 @@ static int shotgun_flash[] =
 	MZ2_SOLDIER_SHOTGUN_8
 
 };
+
 static int machinegun_flash[] =
 {
 	MZ2_SOLDIER_MACHINEGUN_1,
@@ -470,7 +471,9 @@ static int machinegun_flash[] =
 	MZ2_SOLDIER_MACHINEGUN_6,
 	MZ2_SOLDIER_MACHINEGUN_7,
 	MZ2_SOLDIER_MACHINEGUN_8
+
 };
+
 void soldier_fire(edict_t* self, int flash_number)
 {
 	vec3_t	start;

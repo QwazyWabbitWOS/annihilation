@@ -13,7 +13,6 @@ is not a staircase.
 
 =============
 */
-
 qboolean M_CheckBottom(edict_t* ent)
 {
 	vec3_t	mins = { 0 }, maxs = { 0 }, start = { 0 }, stop = { 0 };
@@ -85,7 +84,7 @@ pr_global_struct->trace_normal is set to the normal of the blocking wall
 =============
 */
 //FIXME since we need to test end position contents here, can we avoid doing
-//it again later in catagorize position?
+//it again later in categorize position?
 qboolean SV_movestep(edict_t* ent, vec3_t move, qboolean relink)
 {
 	float		dz;
