@@ -101,7 +101,7 @@ qboolean Within_Radius(vec3_t start, vec3_t end, float rad)
 	vec3_t          eorg = { 0, 0, 0 };
 	int             j;
 	for (j = 0; j < 3; j++)
-		eorg[j] = abs(start[j] - end[j]);
+		eorg[j] = fabs(start[j] - end[j]);
 	return (VectorLength(eorg) < rad);
 }
 
